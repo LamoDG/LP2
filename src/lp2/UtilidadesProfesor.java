@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 /**
@@ -521,7 +522,7 @@ public class UtilidadesProfesor extends javax.swing.JDialog {
                     JOptionPane.WARNING_MESSAGE);
         } else {
             boolean existeix = false;
-            Iterator<Profesor> itArrayProf = inici.ArrayProfesor.iterator();
+            Iterator<Profesor> itArrayProf = inici.ArrayLProfesor.iterator();
             Object[] nomAsignatures = modeloListaAsigDeProf.toArray();
             Asignatura[] asignaturas = new Asignatura[nomAsignatures.length];
             while (itArrayProf.hasNext()) {
@@ -548,7 +549,7 @@ public class UtilidadesProfesor extends javax.swing.JDialog {
                 }
 
                 Profesor profesor = new Profesor(jTFNombreAlta.getText(), Integer.parseInt(jFTFNifAlta.getText()), jTFTelefonoAlta.getText(), asignaturas);
-                inici.ArrayProfesor.add(profesor);
+                inici.ArrayLProfesor.add(profesor);
                 System.out.println(profesor.toString());
 
             }
@@ -586,7 +587,7 @@ public class UtilidadesProfesor extends javax.swing.JDialog {
     }//GEN-LAST:event_botonLimpiarAltaActionPerformed
 
     private void botonBuscarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarConsultaActionPerformed
-        Iterator itArrayProfessor = inici.ArrayProfesor.iterator();
+        Iterator itArrayProfessor = inici.ArrayLProfesor.iterator();
         boolean trobat = false;
         if ("".equals(jFTFNifConsulta.getText())) {
 
@@ -595,7 +596,7 @@ public class UtilidadesProfesor extends javax.swing.JDialog {
                     "Aletra",
                     JOptionPane.WARNING_MESSAGE);
         } else {
-            if (!inici.ArrayProfesor.isEmpty()) {
+            if (!inici.ArrayLProfesor.isEmpty()) {
 
                 while (itArrayProfessor.hasNext()) {
                     profesor = (Profesor) itArrayProfessor.next();
@@ -627,7 +628,7 @@ public class UtilidadesProfesor extends javax.swing.JDialog {
                     JOptionPane.WARNING_MESSAGE);
         } else {
 
-            Iterator<Profesor> itArrayProf = inici.ArrayProfesor.iterator();
+            Iterator<Profesor> itArrayProf = inici.ArrayLProfesor.iterator();
             Object[] nomAsignatures = modeloListaAsigDeProfMod.toArray();
             Asignatura[] asignaturas = new Asignatura[nomAsignatures.length];
 
@@ -662,7 +663,7 @@ public class UtilidadesProfesor extends javax.swing.JDialog {
     }//GEN-LAST:event_botonOKModificacioActionPerformed
 
     private void botonBuscarNifModificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarNifModificacionActionPerformed
-        Iterator itArrayProfessor = inici.ArrayProfesor.iterator();
+        Iterator itArrayProfessor = inici.ArrayLProfesor.iterator();
         System.out.println("Hola hem fet s'iterador");
         limiarCamposBuscar();
         if ("".equals(jFTFNifBuscarModificacion.getText())) {
@@ -672,7 +673,7 @@ public class UtilidadesProfesor extends javax.swing.JDialog {
                     "Aletra",
                     JOptionPane.WARNING_MESSAGE);
         } else {
-            if (!inici.ArrayProfesor.isEmpty()) {//miram si s'array de professors esta ple
+            if (!inici.ArrayLProfesor.isEmpty()) {//miram si s'array de professors esta ple
 
                 while (itArrayProfessor.hasNext()) {// metres tengui prof. itera
                     profesor = (Profesor) itArrayProfessor.next();
@@ -721,7 +722,7 @@ public class UtilidadesProfesor extends javax.swing.JDialog {
     }//GEN-LAST:event_botonLimpiarmodActionPerformed
 
     private void botonEliminarBajaEstudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarBajaEstudioActionPerformed
-        Iterator itArrayProfesores = inici.ArrayProfesor.iterator();
+        Iterator itArrayProfesores = inici.ArrayLProfesor.iterator();
 
         if (!inici.ArrayLAsignaturas.isEmpty()) {
 

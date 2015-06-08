@@ -54,6 +54,14 @@ public class Estudios {
         this.maxEstudiantes = maxEstudiantes;
     }
 
+    public String getEstudios() {
+        return estudios;
+    }
+
+    public void setEstudios(String estudios) {
+        this.estudios = estudios;
+    }
+
     public int getIdentificacion() {
         return identificacion;
     }

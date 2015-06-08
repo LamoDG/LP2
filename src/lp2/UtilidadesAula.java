@@ -391,7 +391,7 @@ public class UtilidadesAula extends javax.swing.JDialog {
 
     private void botonOKAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKAltaActionPerformed
         boolean existeix = false;
-        Iterator itArrayAula = inici.ArrayAula.iterator();
+        Iterator itArrayAula = inici.ArrayLAula.iterator();
 
         try {
 
@@ -409,7 +409,7 @@ public class UtilidadesAula extends javax.swing.JDialog {
                 int identificador = Integer.parseInt(identificadorString);
                 String Tipo = (String) jCBTipoAlta.getSelectedItem();
 
-                if (!inici.ArrayAula.isEmpty()) {
+                if (!inici.ArrayLAula.isEmpty()) {
 
                     
 
@@ -430,7 +430,7 @@ public class UtilidadesAula extends javax.swing.JDialog {
                 if (!existeix) {
 
                     aula = new Aula(identificador, Tipo, Capacidad);
-                    inici.ArrayAula.add(aula);
+                    inici.ArrayLAula.add(aula);
                 }
                 System.out.println("hola");
             }
@@ -448,7 +448,7 @@ public class UtilidadesAula extends javax.swing.JDialog {
 
     private void botonBuscarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarConsultaActionPerformed
 
-        Iterator itArrayAula = inici.ArrayAula.iterator();
+        Iterator itArrayAula = inici.ArrayLAula.iterator();
 
         if ("".equals(jTFIdentificadorConsulta.getText())) {
 
@@ -457,11 +457,11 @@ public class UtilidadesAula extends javax.swing.JDialog {
                     "Aletra",
                     JOptionPane.WARNING_MESSAGE);
         } else {
-            if (!inici.ArrayAula.isEmpty()) {
+            if (!inici.ArrayLAula.isEmpty()) {
                 aula = (Aula) itArrayAula.next();
                 System.out.println(" no esta buit");
 
-                for (int x = 0; x < inici.ArrayAula.size(); x++) {
+                for (int x = 0; x < inici.ArrayLAula.size(); x++) {
 
                     if (aula.getIdentificacion() == Integer.parseInt(jTFIdentificadorConsulta.getText())) {
                         jTAConsulta.setText(aula.toString());
@@ -480,7 +480,7 @@ public class UtilidadesAula extends javax.swing.JDialog {
     }//GEN-LAST:event_botonBuscarConsultaActionPerformed
 
     private void botonBuscarModificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarModificacionActionPerformed
-        Iterator itArrayAula = inici.ArrayAula.iterator();
+        Iterator itArrayAula = inici.ArrayLAula.iterator();
 
         if ("".equals(jFTFIdentificacionModificacionBuscar.getText())) {
 
@@ -489,10 +489,10 @@ public class UtilidadesAula extends javax.swing.JDialog {
                     "Aletra",
                     JOptionPane.WARNING_MESSAGE);
         } else {
-            if (!inici.ArrayAula.isEmpty()) {
+            if (!inici.ArrayLAula.isEmpty()) {
                 System.out.println(" no esta buit");
 
-                for (int x = 0; x < inici.ArrayAula.size(); x++) {
+                for (int x = 0; x < inici.ArrayLAula.size(); x++) {
 
                     if (aula.getIdentificacion() == Integer.parseInt(jFTFIdentificacionModificacionBuscar.getText())) {
 
@@ -557,7 +557,7 @@ public class UtilidadesAula extends javax.swing.JDialog {
                     "Aletra",
                     JOptionPane.WARNING_MESSAGE);
         }
-        for (int x = 0; x < inici.ArrayAula.size(); x++) {
+        for (int x = 0; x < inici.ArrayLAula.size(); x++) {
             if (aula.getIdentificacion() == Integer.parseInt(jFTFIdentificacionModificacionBuscar.getText())) {
                 aula.setCapacidad(Integer.parseInt(jFTFCapacidadModificacion.getText()));
                 aula.setIdentificacion(Integer.parseInt(jFTFIdentificacionModificacion.getText()));
@@ -579,7 +579,7 @@ public class UtilidadesAula extends javax.swing.JDialog {
     }//GEN-LAST:event_botonOKModificacionActionPerformed
 
     private void botonEliminarBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarBajaActionPerformed
-        Iterator itArrayAula = inici.ArrayAula.iterator();
+        Iterator itArrayAula = inici.ArrayLAula.iterator();
         boolean trobat=false;
         if ("".equals(jFTFIdentificadorBaja.getText())) {
             
@@ -589,10 +589,10 @@ public class UtilidadesAula extends javax.swing.JDialog {
                     JOptionPane.WARNING_MESSAGE);
           
         }else{
-            if (!inici.ArrayAula.isEmpty()) {
+            if (!inici.ArrayLAula.isEmpty()) {
                 aula = (Aula) itArrayAula.next();
 
-                for (int x = 0; x < inici.ArrayAula.size(); x++) {
+                for (int x = 0; x < inici.ArrayLAula.size(); x++) {
 
                     if (aula.getIdentificacion() == Integer.parseInt(jFTFIdentificadorBaja.getText())) {
                         itArrayAula.remove();

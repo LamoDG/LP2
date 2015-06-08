@@ -22,9 +22,9 @@ public class inici extends javax.swing.JFrame {
      * Creates new form inici
      */
     static ArrayList<Asignatura> ArrayLAsignaturas = new ArrayList<>();
-    static ArrayList<Aula> ArrayAula = new ArrayList<>();
-    static ArrayList<Profesor> ArrayProfesor = new ArrayList<>();
-    static ArrayList<Estudios> ArrayEstudios = new ArrayList<>();
+    static ArrayList<Aula> ArrayLAula = new ArrayList<>();
+    static ArrayList<Profesor> ArrayLProfesor = new ArrayList<>();
+    static ArrayList<Estudios> ArrayLEstudios = new ArrayList<>();
     public inici() {
         initComponents();
     }

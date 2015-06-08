@@ -5,8 +5,11 @@
  */
 package lp2;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,9 +22,17 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
     DefaultListModel modeloListaProfAlta = new DefaultListModel();
     DefaultListModel modeloListaAulaAlta = new DefaultListModel();
 
+    DefaultListModel modeloListaAsigMod = new DefaultListModel();
+    DefaultListModel modeloListaProfMod = new DefaultListModel();
+    DefaultListModel modeloListaAulaMod = new DefaultListModel();
+
     DefaultListModel modeloListaAsigEstudioAlta = new DefaultListModel();
     DefaultListModel modeloListaProfEstudioAlta = new DefaultListModel();
     DefaultListModel modeloListaAulaEstudioAlta = new DefaultListModel();
+
+    DefaultListModel modeloListaAsigEstudioMod = new DefaultListModel();
+    DefaultListModel modeloListaProfEstudioMod = new DefaultListModel();
+    DefaultListModel modeloListaAulaEstudioMod = new DefaultListModel();
 
     Asignatura asig = new Asignatura();
     Profesor prof = new Profesor();
@@ -34,6 +45,34 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
         rellenarJlistAsigAlta();
         rellenarJlistAulaAlta();
         rellenarJlistProfAlta();
+
+        jTFNombreMod.setEnabled(false);
+        jFTFCapacidadMaxAltaEstudioMod.setEnabled(false);
+        jFTFFechaComienzoMod.setEnabled(false);
+        jFTFFechaFinalizacionMod.setEnabled(false);
+        jFTFIdentificacionMod.setEnabled(false);
+        jFTFIdentificadorBaja.setEnabled(false);
+
+        botonAddAsignaEstMod.setEnabled(false);
+        botonAddAulaEstMod.setEnabled(false);
+        botonAddProfEstMod.setEnabled(false);
+        botonEliminarAsignaturaEstMod.setEnabled(false);
+        botonEliminarAulaEstMod.setEnabled(false);
+        botonEliminarProfEstMod.setEnabled(false);
+
+        botonOKMod.setEnabled(false);
+        botonLimpiarMod.setEnabled(false);
+
+        jCBTipoEstudioMod.setEnabled(false);
+        jCBTipoMod.setEnabled(false);
+        jCBTurnoMod.setEnabled(false);
+
+        jLAsignaturasEstudioMod.setEnabled(false);
+        jLAsignaturasMod.setEnabled(false);
+        jLAulaEstudioMod.setEnabled(false);
+        jLAulaMod.setEnabled(false);
+        jLProfEstudioMod.setEnabled(false);
+        jLProfMod.setEnabled(false);
     }
 
     /**
@@ -104,11 +143,11 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
-        jCBTipoAltaEstudioMod = new javax.swing.JComboBox();
-        jCBTurnoAltaEstudioMod = new javax.swing.JComboBox();
+        jCBTipoMod = new javax.swing.JComboBox();
+        jCBTurnoMod = new javax.swing.JComboBox();
         jFTFFechaFinalizacionMod = new javax.swing.JFormattedTextField();
         jFTFFechaComienzoMod = new javax.swing.JFormattedTextField();
-        jCBTipoMod = new javax.swing.JComboBox();
+        jCBTipoEstudioMod = new javax.swing.JComboBox();
         jTFNombreMod = new javax.swing.JTextField();
         jFTFIdentificacionMod = new javax.swing.JFormattedTextField();
         jLabel36 = new javax.swing.JLabel();
@@ -128,16 +167,20 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
         botonEliminarAsignaturaEstMod = new javax.swing.JButton();
         jScrollPane15 = new javax.swing.JScrollPane();
         jLAsignaturasEstudioMod = new javax.swing.JList();
-        botonLimpiarMod = new javax.swing.JButton();
-        botonOKMod = new javax.swing.JButton();
         jScrollPane16 = new javax.swing.JScrollPane();
         jLAulaEstudioMod = new javax.swing.JList();
         jScrollPane17 = new javax.swing.JScrollPane();
         jLProfEstudioMod = new javax.swing.JList();
         jLabel13 = new javax.swing.JLabel();
+        botonOKMod = new javax.swing.JButton();
+        jFTFIdentificacionModBuscar = new javax.swing.JFormattedTextField();
+        jLabel12 = new javax.swing.JLabel();
+        botonBuscarEstMod = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        botonLimpiarMod = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
-        jFTFIdentificacionBaja = new javax.swing.JFormattedTextField();
+        jFTFIdentificadorBaja = new javax.swing.JFormattedTextField();
         botonEliminarBajaEstudio = new javax.swing.JButton();
         botonLimpiarBajaEstudio = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
@@ -208,7 +251,7 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
             }
         });
 
-        botonOKAltaEstudio.setText("Ok");
+        botonOKAltaEstudio.setText("OK");
         botonOKAltaEstudio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonOKAltaEstudioActionPerformed(evt);
@@ -470,11 +513,11 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(48, Short.MAX_VALUE))
+                        .addContainerGap(304, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel29)
                         .addGap(18, 18, 18)
-                        .addComponent(jFTFIdentificacionConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                        .addComponent(jFTFIdentificacionConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                         .addGap(24, 24, 24)
                         .addComponent(botonBuscarConsulta)
                         .addGap(420, 420, 420))))
@@ -512,14 +555,14 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
 
         jLabel35.setText("<html><body>Capacidad <br> max.est.: </body></html>");
 
-        jCBTipoAltaEstudioMod.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "A", "B", "C", "D", "E", " " }));
-        jCBTipoAltaEstudioMod.addActionListener(new java.awt.event.ActionListener() {
+        jCBTipoMod.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "A", "B", "C", "D", "E", " " }));
+        jCBTipoMod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCBTipoAltaEstudioModActionPerformed(evt);
+                jCBTipoModActionPerformed(evt);
             }
         });
 
-        jCBTurnoAltaEstudioMod.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Mañana", "Tarde", "Mañana y tarde" }));
+        jCBTurnoMod.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Mañana", "Tarde", "Mañana y tarde" }));
 
         jFTFFechaFinalizacionMod.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
         jFTFFechaFinalizacionMod.addActionListener(new java.awt.event.ActionListener() {
@@ -535,7 +578,7 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
             }
         });
 
-        jCBTipoMod.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Master", "Curso de especialización", "Taller", "Conferencia", "Mesa redonda" }));
+        jCBTipoEstudioMod.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Master", "Curso de especialización", "Taller", "Conferencia", "Mesa redonda" }));
 
         jFTFIdentificacionMod.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
@@ -552,6 +595,11 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
         jScrollPane2.setViewportView(jLProfMod);
 
         botonAddProfEstMod.setText(">>");
+        botonAddProfEstMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAddProfEstModActionPerformed(evt);
+            }
+        });
 
         botonEliminarProfEstMod.setText("<<");
         botonEliminarProfEstMod.addActionListener(new java.awt.event.ActionListener() {
@@ -561,28 +609,34 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
         });
 
         botonAddAulaEstMod.setText(">>");
+        botonAddAulaEstMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAddAulaEstModActionPerformed(evt);
+            }
+        });
 
         botonEliminarAulaEstMod.setText("<<");
+        botonEliminarAulaEstMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarAulaEstModActionPerformed(evt);
+            }
+        });
 
         botonAddAsignaEstMod.setText(">>");
+        botonAddAsignaEstMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAddAsignaEstModActionPerformed(evt);
+            }
+        });
 
         botonEliminarAsignaturaEstMod.setText("<<");
+        botonEliminarAsignaturaEstMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarAsignaturaEstModActionPerformed(evt);
+            }
+        });
 
         jScrollPane15.setViewportView(jLAsignaturasEstudioMod);
-
-        botonLimpiarMod.setText("Limpiar");
-        botonLimpiarMod.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonLimpiarModActionPerformed(evt);
-            }
-        });
-
-        botonOKMod.setText("Ok");
-        botonOKMod.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonOKModActionPerformed(evt);
-            }
-        });
 
         jScrollPane16.setViewportView(jLAulaEstudioMod);
 
@@ -591,94 +645,138 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
         jLabel13.setForeground(new java.awt.Color(102, 102, 102));
         jLabel13.setText("Formato: dd/MM/yy");
 
+        botonOKMod.setText("OK");
+        botonOKMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonOKModActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Identificador:");
+
+        botonBuscarEstMod.setText("Buscar");
+        botonBuscarEstMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarEstModActionPerformed(evt);
+            }
+        });
+
+        botonLimpiarMod.setText("Limpiar");
+        botonLimpiarMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonLimpiarModActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel33)
-                            .addComponent(jLabel34)
-                            .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCBTipoAltaEstudioMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCBTurnoAltaEstudioMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFTFCapacidadMaxAltaEstudioMod, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel31)
-                            .addComponent(jLabel32))
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
-                            .addComponent(jFTFFechaComienzoMod)
-                            .addComponent(jFTFFechaFinalizacionMod))))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel38)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(botonEliminarAsignaturaEstMod)
-                                .addComponent(botonAddAsignaEstMod))
-                            .addGap(18, 18, 18)
-                            .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel36)
-                                .addComponent(jLabel37))
-                            .addGap(43, 43, 43)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(botonAddProfEstMod)
-                                        .addComponent(botonEliminarProfEstMod))
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(botonAddAulaEstMod)
-                                        .addComponent(botonEliminarAulaEstMod))
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(botonLimpiarMod)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonOKMod, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(57, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(26, 26, 26)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel26)
-                        .addComponent(jLabel27)
-                        .addComponent(jLabel28))
-                    .addGap(48, 48, 48)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTFNombreMod)
-                        .addComponent(jFTFIdentificacionMod)
-                        .addComponent(jCBTipoMod, 0, 128, Short.MAX_VALUE))
-                    .addContainerGap(522, Short.MAX_VALUE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(botonLimpiarMod, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(37, 37, 37)
+                            .addComponent(botonOKMod, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGap(35, 35, 35)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel33)
+                                                    .addComponent(jLabel34)
+                                                    .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(30, 30, 30)
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jCBTipoMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jCBTurnoMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jFTFCapacidadMaxAltaEstudioMod, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel31)
+                                                    .addComponent(jLabel32))
+                                                .addGap(30, 30, 30)
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(jFTFFechaComienzoMod)
+                                                    .addComponent(jFTFFechaFinalizacionMod, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel26)
+                                                .addComponent(jLabel27)
+                                                .addComponent(jLabel28))
+                                            .addGap(48, 48, 48)
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jTFNombreMod)
+                                                .addComponent(jFTFIdentificacionMod)
+                                                .addComponent(jCBTipoEstudioMod, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGap(18, 18, 18))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(jLabel12)
+                                    .addGap(31, 31, 31)))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel36)
+                                        .addComponent(jLabel37))
+                                    .addGap(43, 43, 43)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(botonAddProfEstMod)
+                                                .addComponent(botonEliminarProfEstMod))
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(botonAddAulaEstMod)
+                                                .addComponent(botonEliminarAulaEstMod))
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel38)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(botonEliminarAsignaturaEstMod)
+                                        .addComponent(botonAddAsignaEstMod))
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jFTFIdentificacionModBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(botonBuscarEstMod)))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(252, 252, 252)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(303, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jFTFIdentificacionModBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(botonBuscarEstMod))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel36)
-                        .addGap(21, 221, Short.MAX_VALUE))
+                        .addGap(21, 196, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -686,21 +784,20 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
                                 .addComponent(botonAddProfEstMod)
                                 .addGap(18, 18, 18)
                                 .addComponent(botonEliminarProfEstMod))
-                            .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jFTFIdentificacionMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel26))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTFNombreMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel27))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel28)
+                                    .addComponent(jCBTipoEstudioMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(35, 35, 35))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addComponent(botonAddAulaEstMod)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(botonEliminarAulaEstMod)
-                                        .addGap(43, 43, 43))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(29, 29, 29)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -715,7 +812,17 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
                                             .addComponent(jLabel32)
                                             .addComponent(jFTFFechaFinalizacionMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addComponent(jLabel37))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(botonAddAulaEstMod)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(botonEliminarAulaEstMod))
+                                    .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(25, 25, 25)))))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -726,48 +833,38 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
                                 .addComponent(botonAddAsignaEstMod)
                                 .addGap(18, 18, 18)
                                 .addComponent(botonEliminarAsignaturaEstMod)))
-                        .addGap(44, 44, 44)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botonLimpiarMod)
-                            .addComponent(botonOKMod)))
+                            .addComponent(botonOKMod)
+                            .addComponent(botonLimpiarMod)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel33)
-                            .addComponent(jCBTurnoAltaEstudioMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCBTurnoMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel38))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel34)
-                            .addComponent(jCBTipoAltaEstudioMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jCBTipoMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jFTFCapacidadMaxAltaEstudioMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(36, 36, 36))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(45, 45, 45)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jFTFIdentificacionMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel26))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTFNombreMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel27))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel28)
-                        .addComponent(jCBTipoMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(339, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Modificacion", jPanel2);
 
         jLabel30.setText("Identificacion:");
 
-        jFTFIdentificacionBaja.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        jFTFIdentificadorBaja.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
 
         botonEliminarBajaEstudio.setText("Eliminar");
+        botonEliminarBajaEstudio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarBajaEstudioActionPerformed(evt);
+            }
+        });
 
         botonLimpiarBajaEstudio.setText("Limpiar");
 
@@ -781,7 +878,7 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel30)
                         .addGap(36, 36, 36)
-                        .addComponent(jFTFIdentificacionBaja))
+                        .addComponent(jFTFIdentificadorBaja))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(104, 104, 104)
                         .addComponent(botonLimpiarBajaEstudio)
@@ -794,7 +891,7 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(123, 123, 123)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFTFIdentificacionBaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFTFIdentificadorBaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel30))
                 .addGap(86, 86, 86)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -809,7 +906,7 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 792, Short.MAX_VALUE)
+            .addGap(0, 1048, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -849,17 +946,27 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_botonEliminarProfEstAltaActionPerformed
 
-    private void jCBTipoAltaEstudioModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBTipoAltaEstudioModActionPerformed
+    private void jCBTipoModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBTipoModActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCBTipoAltaEstudioModActionPerformed
-
+    }//GEN-LAST:event_jCBTipoModActionPerformed
+//falla per aki
     private void botonEliminarProfEstModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarProfEstModActionPerformed
-        // TODO add your handling code here:
+        if (jLProfEstudioMod.getSelectedValue() == null) {
+            JOptionPane.showMessageDialog(null,
+                    "Selecciona un profesor",
+                    "Informacion",
+                    JOptionPane.WARNING_MESSAGE);
+        } else {
+            modeloListaProfMod.addElement(jLProfEstudioMod.getSelectedValue());
+            modeloListaProfEstudioMod.removeElementAt(jLProfEstudioMod.getSelectedIndex());
+            jLProfMod.setModel(modeloListaProfMod);
+        }
     }//GEN-LAST:event_botonEliminarProfEstModActionPerformed
 
     private void botonOKAltaEstudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKAltaEstudioActionPerformed
         if ("".equals(jTFNombreAlta.getText()) || "".equals(jFTFIdentificacionAlta.getText()) || "".equals(jFTFCapacidadMaxAltaEstudio.getText())
-                || "".equals(jFTFFechaComienzoAlta.getText()) || "".equals(jFTFFechaFinalizacionAlta.getText())) {
+                || "".equals(jFTFFechaComienzoAlta.getText()) || "".equals(jFTFFechaFinalizacionAlta.getText())
+                || jCBTipoEstudioAlta.getSelectedItem() == "-" || jCBTipoAlta.getSelectedItem() == "-" || jCBTurnoAltaEstudio.getSelectedItem() == "-") {
 
             JOptionPane.showMessageDialog(null,
                     "Hay campos vacios",
@@ -867,7 +974,7 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
                     JOptionPane.WARNING_MESSAGE);
         } else {
 
-            Iterator<Estudios> itArrayEstu = inici.ArrayEstudios.iterator();
+            Iterator<Estudios> itArrayEstu = inici.ArrayLEstudios.iterator();
             //collim tots els valors de jList
             Object[] nomAsignaturas = modeloListaAsigEstudioAlta.toArray();
             String[] asignaturas = new String[nomAsignaturas.length];
@@ -878,10 +985,10 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
             boolean existeix = false; //cercam l'aula si esta creada
             while (itArrayEstu.hasNext() && !existeix) {
                 estudio = (Estudios) itArrayEstu.next();
-                if (estudio.getNombre().equals(jTFNombreAlta.getText())) {
-
+                if (estudio.getNombre().equals(jTFNombreAlta.getText()) || estudio.getIdentificacion() == Integer.parseInt(jFTFIdentificacionAlta.getText())) {
+                    existeix = true;
                     JOptionPane.showMessageDialog(null,
-                            "Ya se ha dado de alta este profesor",
+                            "Ya se ha dado de alta este Estudio",
                             "Aletra",
                             JOptionPane.WARNING_MESSAGE);
                 }
@@ -902,9 +1009,9 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
                         System.out.println(i);
                     }
                 }
-                System.out.println("pprof");
+                System.out.println("prof");
                 for (int i = 0; i < nomProfesores.length; i++) {
-                    Iterator itArrayProf = inici.ArrayProfesor.iterator();
+                    Iterator itArrayProf = inici.ArrayLProfesor.iterator();
                     while (itArrayProf.hasNext()) {
                         prof = (Profesor) itArrayProf.next();
                         if (prof.getNombre().equals(nomAsignaturas[i])) {
@@ -917,10 +1024,12 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
                 }
                 System.out.println("aula");
                 for (int i = 0; i < nomAulas.length; i++) {
-                    Iterator itArrayAulas = inici.ArrayAula.iterator();
+                    Iterator itArrayAulas = inici.ArrayLAula.iterator();
                     while (itArrayAulas.hasNext()) {
                         aula = (Aula) itArrayAulas.next();
-                        if (String.valueOf(aula.getIdentificacion()).equals(nomAulas[i])) {
+                        System.out.println("prebucle");
+                        System.out.println(aula.getIdentificacion() + "   " + nomAulas[i]);
+                        if (String.valueOf(aula.getIdentificacion()).equals(String.valueOf(nomAulas[i]))) {
                             aulas[i] = aula.getIdentificacion();
                             System.out.println("dedins bulcle aules");
                             System.out.println(aula.toString());
@@ -936,7 +1045,7 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
                             jFTFFechaFinalizacionAlta.getText(), jCBTurnoAltaEstudio.getSelectedItem().toString(),
                             asignaturas, aulas, profesores, jCBTipoAlta.getSelectedItem().toString(),
                             Integer.parseInt(jFTFCapacidadMaxAltaEstudio.getText()));
-                    inici.ArrayEstudios.add(estudio);
+                    inici.ArrayLEstudios.add(estudio);
                     System.out.println(estudio);
 
                 } catch (Exception e) {
@@ -970,7 +1079,20 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
     }//GEN-LAST:event_jCBTurnoAltaEstudioActionPerformed
 
     private void botonLimpiarAltaEstudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarAltaEstudioActionPerformed
-        // TODO add your handling code here:
+        jFTFIdentificacionAlta.setText("");
+        jTFNombreAlta.setText("");
+        jFTFFechaComienzoAlta.setText("");
+        jFTFFechaFinalizacionAlta.setText("");
+        jFTFCapacidadMaxAltaEstudio.setText("");
+        jCBTipoEstudioAlta.setSelectedIndex(0);
+        jCBTipoAlta.setSelectedIndex(0);
+        jCBTurnoAltaEstudio.setSelectedIndex(0);
+        jLAsignaturasEstudioAlta.setModel(new DefaultListModel());
+        jLAsignaturasAlta.setModel(new DefaultListModel());
+        jLAulaEstudioAlta.setModel(new DefaultListModel());
+        jLAulaAlta.setModel(new DefaultListModel());
+        jLProfEstudioAlta.setModel(new DefaultListModel());
+        jLProfAlta.setModel(new DefaultListModel());
     }//GEN-LAST:event_botonLimpiarAltaEstudioActionPerformed
 
     private void botonAddProfEstAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAddProfEstAltaActionPerformed
@@ -1007,7 +1129,7 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
 
 
     private void botonBuscarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarConsultaActionPerformed
-        Iterator itArrayEstudios = inici.ArrayEstudios.iterator();
+        Iterator itArrayEstudios = inici.ArrayLEstudios.iterator();
         boolean trobat = false;
         if ("".equals(jFTFIdentificacionConsulta.getText())) {
 
@@ -1016,9 +1138,9 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
                     "Aletra",
                     JOptionPane.WARNING_MESSAGE);
         } else {
-            if (!inici.ArrayEstudios.isEmpty()) {
+            if (!inici.ArrayLEstudios.isEmpty()) {
 
-                while (itArrayEstudios.hasNext() && trobat) {
+                while (itArrayEstudios.hasNext() && !trobat) {
                     estudio = (Estudios) itArrayEstudios.next();
                     System.out.println(estudio.getIdentificacion() + " == " + Integer.parseInt(jFTFIdentificacionConsulta.getText()));
                     if (estudio.getIdentificacion() == Integer.parseInt(jFTFIdentificacionConsulta.getText())) {
@@ -1028,7 +1150,7 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
                     }
                 }
                 if (!trobat) {
-                    jTAConsulta.setText("No hay ningun estudio dado de alta con este Nif");
+                    jTAConsulta.setText("No hay ningun estudio dado de alta con este identificador");
                 }
 
             } else {
@@ -1085,6 +1207,403 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_botonEliminarAsignaturaEstAltaActionPerformed
 
+    private void botonOKModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKModActionPerformed
+
+        Iterator itArrayEst = inici.ArrayLEstudios.iterator();
+
+        if (!inici.ArrayLEstudios.isEmpty()) {
+            while (itArrayEst.hasNext()) {
+                estudio = (Estudios) itArrayEst.next();
+                if (estudio.getIdentificacion() == Integer.parseInt(jFTFIdentificacionModBuscar.getText())) {
+                    
+                    
+                    estudio.setIdentificacion(99999999);
+                    estudio.setNombre("#");
+                    
+                    if ("".equals(jTFNombreMod.getText()) || "".equals(jFTFIdentificacionMod.getText()) || "".equals(jFTFCapacidadMaxAltaEstudioMod.getText())
+                            || "".equals(jFTFFechaComienzoMod.getText()) || "".equals(jFTFFechaFinalizacionMod.getText())
+                            || jCBTipoEstudioMod.getSelectedItem() == "-" || jCBTipoMod.getSelectedItem() == "-" || jCBTurnoMod.getSelectedItem() == "-") {
+
+                        JOptionPane.showMessageDialog(null,
+                                "Hay campos vacios",
+                                "Aletra",
+                                JOptionPane.WARNING_MESSAGE);
+                    } else {
+
+                        //AQUI COMROBACIO QUE NO SE CREU UN QUE JA ESXISTEIX
+                        Iterator<Estudios> itArrayEstu = inici.ArrayLEstudios.iterator();
+                        boolean existeix = false;
+
+                        while (itArrayEstu.hasNext() && !existeix) {
+                            estudio = (Estudios) itArrayEstu.next();
+                            if (estudio.getNombre().equals(jTFNombreMod.getText()) || estudio.getIdentificacion() == Integer.parseInt(jFTFIdentificacionMod.getText())) {
+                                existeix = true;
+                                JOptionPane.showMessageDialog(null,
+                                        "Ya se ha dado de alta este Estudio.\n Debes cambiar el identificador i el nombre",
+                                        "Aletra",
+                                        JOptionPane.WARNING_MESSAGE);
+                            }
+                        }
+                        if (!existeix) {
+//s'ha d'acabar es metode!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                            itArrayEstu = inici.ArrayLEstudios.iterator();
+                            //collim tots els valors de jList
+                            Object[] nomAsignaturas = modeloListaAsigEstudioMod.toArray();
+                            String[] asignaturas = new String[nomAsignaturas.length];
+                            Object[] nomProfesores = modeloListaProfEstudioMod.toArray();
+                            String[] profesores = new String[nomProfesores.length];
+                            Object[] nomAulas = modeloListaAulaEstudioMod.toArray();
+                            int[] aulas = new int[nomAulas.length];
+                            ////////////////////////////////////////////////////////////////////////////////////
+                            //rellenam arrays de  asignatures, professors i aules
+                            System.out.println("asig");
+                            for (int i = 0; i < nomAsignaturas.length; i++) {
+                                Iterator itArrayAsig = inici.ArrayLAsignaturas.iterator();
+                                while (itArrayAsig.hasNext()) {
+                                    asig = (Asignatura) itArrayAsig.next();
+                                    if (asig.getNombre().equals(nomAsignaturas[i])) {
+                                        asignaturas[i] = asig.getNombre();
+                                        System.out.println("dedins bulcle asig");
+                                        System.out.println(asig.toString());
+                                    }
+                                    System.out.println(i);
+                                }
+                            }
+                            System.out.println("prof");
+                            for (int i = 0; i < nomProfesores.length; i++) {
+                                Iterator itArrayProf = inici.ArrayLProfesor.iterator();
+                                while (itArrayProf.hasNext()) {
+                                    prof = (Profesor) itArrayProf.next();
+                                    if (prof.getNombre().equals(nomAsignaturas[i])) {
+                                        profesores[i] = prof.getNombre();
+                                        System.out.println("dedins bulcle prof");
+                                        System.out.println(prof.toString());
+                                    }
+                                    System.out.println(i);
+                                }
+                            }
+                            System.out.println("aula");
+                            for (int i = 0; i < nomAulas.length; i++) {
+                                Iterator itArrayAulas = inici.ArrayLAula.iterator();
+                                while (itArrayAulas.hasNext()) {
+                                    aula = (Aula) itArrayAulas.next();
+                                    System.out.println("prebucle");
+                                    System.out.println(aula.getIdentificacion() + "   " + nomAulas[i]);
+                                    if (String.valueOf(aula.getIdentificacion()).equals(String.valueOf(nomAulas[i]))) {
+                                        aulas[i] = aula.getIdentificacion();
+                                        System.out.println("dedins bulcle aules");
+                                        System.out.println(aula.toString());
+                                    }
+                                    System.out.println(i);
+                                }
+                            }
+                            estudio.setIdentificacion(Integer.parseInt(jFTFIdentificacionMod.getText()));
+                            estudio.setNombre(jTFNombreMod.getText());
+                            estudio.setEstudios(jCBTipoEstudioMod.getSelectedItem().toString());
+                            estudio.setFechaComienzo(jFTFFechaComienzoMod.getText());
+                            estudio.setFechaFinalizacion(jFTFFechaFinalizacionMod.getText());
+                            estudio.setTurno(jCBTurnoMod.getSelectedItem().toString());
+                            estudio.setAsignaturas(asignaturas);
+                            estudio.setAulas(aulas);
+                            estudio.setProfesores(profesores);
+                            estudio.setTipo(jCBTipoMod.getSelectedItem().toString());
+                            estudio.setMaxEstudiantes(Integer.parseInt(jFTFCapacidadMaxAltaEstudioMod.getText()));
+
+                            activarcampsMod(false);
+                        }
+
+                    }
+
+    }//GEN-LAST:event_botonOKModActionPerformed
+
+    private void botonBuscarEstModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarEstModActionPerformed
+        Iterator itArrayEstuios = inici.ArrayLEstudios.iterator();
+        activarcampsMod(true);
+
+        if ("".equals(jFTFIdentificacionModBuscar.getText())) {
+
+            JOptionPane.showMessageDialog(null,
+                    "No has escrito ningun identificador",
+                    "Aletra",
+                    JOptionPane.WARNING_MESSAGE);
+        } else {
+            if (!inici.ArrayLEstudios.isEmpty()) {//miram si s'array de professors esta ple
+
+                while (itArrayEstuios.hasNext()) {// metres tengui Est. itera
+                    estudio = (Estudios) itArrayEstuios.next();
+
+                    if (estudio.getIdentificacion() == Integer.parseInt(jFTFIdentificacionModBuscar.getText())) {
+                        //quan troba l'estudi asigna valors als components del panell
+                        jFTFIdentificacionMod.setText(String.valueOf(estudio.getIdentificacion()));
+                        jTFNombreMod.setText(estudio.getNombre());
+                        jFTFFechaComienzoMod.setText(estudio.getFechaComienzo());
+                        jFTFFechaFinalizacionMod.setText(estudio.getFechaFinalizacion());
+                        jFTFCapacidadMaxAltaEstudioMod.setText(String.valueOf(estudio.getMaxEstudiantes()));
+                        //rellenar Jcombobox
+                        switch (estudio.getEstudios()) {
+                            case "Master":
+                                jCBTipoEstudioMod.setSelectedIndex(1);
+                                break;
+                            case "Curso de especialización":
+                                jCBTipoEstudioMod.setSelectedIndex(2);
+                                break;
+                            case "Taller":
+                                jCBTipoEstudioMod.setSelectedIndex(3);
+                                break;
+                            case "Conferencia":
+                                jCBTipoEstudioMod.setSelectedIndex(4);
+                                break;
+                            case "Mesa redonda":
+                                jCBTipoEstudioMod.setSelectedIndex(5);
+                                break;
+                            default:
+                                jCBTipoEstudioMod.setSelectedIndex(0);
+                                break;
+
+                        }
+                        switch (estudio.getTipo()) {
+                            case "A":
+                                jCBTipoMod.setSelectedIndex(1);
+                                break;
+                            case "B":
+                                jCBTipoMod.setSelectedIndex(2);
+                                break;
+                            case "C":
+                                jCBTipoMod.setSelectedIndex(3);
+                                break;
+                            case "D":
+                                jCBTipoMod.setSelectedIndex(4);
+                                break;
+                            case "E":
+                                jCBTipoMod.setSelectedIndex(5);
+                                break;
+                            default:
+                                jCBTipoMod.setSelectedIndex(0);
+                                break;
+
+                        }
+                        switch (estudio.getTurno()) {
+                            case "Mañana":
+                                jCBTurnoMod.setSelectedIndex(1);
+                                break;
+                            case "Tarde":
+                                jCBTurnoMod.setSelectedIndex(2);
+                                break;
+                            case "Mañana y tarde":
+                                jCBTurnoMod.setSelectedIndex(3);
+                                break;
+                            default:
+                                jCBTurnoMod.setSelectedIndex(0);
+                                break;
+
+                        }
+
+                        //omplim els Jlist
+                        rellenarJlistAsigEstudioMod(estudio.getAsignaturas());
+                        rellenarJlistAulaEstudioMod(estudio.getAulas());
+                        rellenarJlistProfEstudioMod(estudio.getProfesores());
+                        Integer[] arrayAuxAulas = new Integer[estudio.getProfesores().length];
+                        int i = 0;
+                        //rellenam array d'aules ja que els array list no poden generarse de tipus primitius(int, char...)
+                        for (int var : estudio.getAulas()) {
+                            arrayAuxAulas[i] = var;
+                            i++;
+                        }
+
+                        rellenarJlistAulaMod(arrayAuxAulas);
+                        rellenarJlistProfMod(estudio.getProfesores());
+                        rellenarJlistAsigMod(estudio.getAsignaturas());
+                    }
+                }
+                System.out.println("fora bucle");
+            }
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_botonBuscarEstModActionPerformed
+
+    private void botonLimpiarModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarModActionPerformed
+        jFTFIdentificacionMod.setText("");
+        jTFNombreMod.setText("");
+        jFTFFechaComienzoMod.setText("");
+        jFTFFechaFinalizacionMod.setText("");
+        jFTFCapacidadMaxAltaEstudioMod.setText("");
+        jCBTipoEstudioMod.setSelectedIndex(0);
+        jCBTipoMod.setSelectedIndex(0);
+        jCBTurnoMod.setSelectedIndex(0);
+        jLAsignaturasEstudioMod.setModel(new DefaultListModel());
+        jLAsignaturasMod.setModel(new DefaultListModel());
+        jLAulaEstudioMod.setModel(new DefaultListModel());
+        jLAulaMod.setModel(new DefaultListModel());
+        jLProfEstudioMod.setModel(new DefaultListModel());
+        jLProfMod.setModel(new DefaultListModel());
+    }//GEN-LAST:event_botonLimpiarModActionPerformed
+
+    private void botonAddProfEstModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAddProfEstModActionPerformed
+        if (jLProfEstudioMod.getSelectedValue() == null) {
+            JOptionPane.showMessageDialog(null,
+                    "Selecciona un profesor",
+                    "Informacion",
+                    JOptionPane.WARNING_MESSAGE);
+
+        } else {
+            modeloListaProfEstudioMod.addElement(jLProfMod.getSelectedValue());
+            modeloListaProfMod.removeElementAt(jLProfMod.getSelectedIndex());
+            jLProfEstudioMod.setModel(modeloListaProfEstudioMod);
+
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonAddProfEstModActionPerformed
+
+    private void botonAddAulaEstModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAddAulaEstModActionPerformed
+        if (jLAulaMod.getSelectedValue() == null) {
+            JOptionPane.showMessageDialog(null,
+                    "Selecciona una aula",
+                    "Informacion",
+                    JOptionPane.WARNING_MESSAGE);
+
+        } else {
+            modeloListaAulaEstudioMod.addElement(jLAulaMod.getSelectedValue());
+            modeloListaAulaMod.removeElementAt(jLAulaMod.getSelectedIndex());
+            jLAulaEstudioMod.setModel(modeloListaAulaEstudioMod);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_botonAddAulaEstModActionPerformed
+
+    private void botonEliminarAulaEstModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarAulaEstModActionPerformed
+        if (jLAulaEstudioMod.getSelectedValue() == null) {
+            JOptionPane.showMessageDialog(null,
+                    "Selecciona Aula",
+                    "Informacion",
+                    JOptionPane.WARNING_MESSAGE);
+        } else {
+            modeloListaAulaMod.addElement(jLAulaEstudioMod.getSelectedValue());
+            modeloListaAulaEstudioMod.removeElementAt(jLAulaEstudioMod.getSelectedIndex());
+            jLAulaMod.setModel(modeloListaAulaMod);
+
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_botonEliminarAulaEstModActionPerformed
+
+    private void botonAddAsignaEstModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAddAsignaEstModActionPerformed
+        if (jLAsignaturasMod.getSelectedValue() == null) {
+            JOptionPane.showMessageDialog(null,
+                    "Selecciona una asignatura",
+                    "Informacion",
+                    JOptionPane.WARNING_MESSAGE);
+
+        } else {
+            modeloListaAsigEstudioMod.addElement(jLAsignaturasMod.getSelectedValue());
+            modeloListaAsigMod.removeElementAt(jLAsignaturasMod.getSelectedIndex());
+            jLAsignaturasEstudioMod.setModel(modeloListaAsigEstudioMod);
+
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_botonAddAsignaEstModActionPerformed
+
+    private void botonEliminarAsignaturaEstModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarAsignaturaEstModActionPerformed
+
+        if (jLAsignaturasEstudioMod.getSelectedValue() == null) {
+            JOptionPane.showMessageDialog(null,
+                    "Selecciona asignatura",
+                    "Informacion",
+                    JOptionPane.WARNING_MESSAGE);
+        } else {
+            modeloListaAsigMod.addElement(jLAsignaturasEstudioMod.getSelectedValue());
+            modeloListaAsigEstudioMod.removeElementAt(jLAsignaturasEstudioMod.getSelectedIndex());
+            jLAsignaturasMod.setModel(modeloListaAsigMod);
+        }
+    }//GEN-LAST:event_botonEliminarAsignaturaEstModActionPerformed
+
+    private void botonEliminarBajaEstudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarBajaEstudioActionPerformed
+        Iterator itArrayEst = inici.ArrayLEstudios.iterator();
+
+        if (!inici.ArrayLEstudios.isEmpty()) {
+            while (itArrayEst.hasNext()) {
+                estudio = (Estudios) itArrayEst.next();
+                if (estudio.getIdentificacion() == Integer.parseInt(jFTFIdentificadorBaja.getText())) {
+                    itArrayEst.remove();
+                    JOptionPane.showMessageDialog(null,
+                            "Se ha eliminado correctamente",
+                            "Informacion",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    jFTFIdentificadorBaja.setText("");
+
+                } else {
+                    JOptionPane.showMessageDialog(null,
+                            "No se ha encotrado el estudio",
+                            "Informacion",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    jFTFIdentificadorBaja.setText("");
+                }
+            }
+        }
+    }//GEN-LAST:event_botonEliminarBajaEstudioActionPerformed
+    private void rellenarJlistAsigEstudioMod(String arrayAsig[]) {
+        modeloListaAsigEstudioMod = new DefaultListModel();
+        for (String var : arrayAsig) {
+            modeloListaAsigEstudioMod.addElement(var);
+        }
+        jLAsignaturasEstudioMod.setModel(modeloListaAsigEstudioMod);
+    }
+
+    private void rellenarJlistProfEstudioMod(String arrayProf[]) {
+        modeloListaProfEstudioMod = new DefaultListModel();
+        for (String var : arrayProf) {
+            modeloListaProfEstudioMod.addElement(var);
+        }
+        jLProfEstudioMod.setModel(modeloListaProfEstudioMod);
+
+    }
+
+    private void rellenarJlistAulaEstudioMod(int arrayAula[]) {
+        modeloListaAulaEstudioMod = new DefaultListModel();
+        for (int var : arrayAula) {
+            modeloListaAulaEstudioMod.addElement(var);
+        }
+        jLAulaEstudioMod.setModel(modeloListaAulaEstudioMod);
+    }
+
+    private void rellenarJlistAsigMod(String arrayAsig[]) {
+
+        modeloListaAsigMod = new DefaultListModel();
+        ArrayList<String> arrayLAsig = new ArrayList<>(Arrays.asList(arrayAsig));
+        Iterator itarrayAsigMod = inici.ArrayLAsignaturas.iterator();
+
+        while (itarrayAsigMod.hasNext()) {
+            asig = (Asignatura) itarrayAsigMod.next();
+            if (!arrayLAsig.contains(asig.getNombre())) {
+                modeloListaAsigMod.addElement(asig.getNombre());
+            }
+        }
+        jLAsignaturasMod.setModel(modeloListaAsigMod);
+    }
+
+    private void rellenarJlistProfMod(String arrayProf[]) {
+
+        modeloListaProfMod = new DefaultListModel();
+        ArrayList<String> arrayLProf = new ArrayList<>(Arrays.asList(arrayProf));
+        Iterator itarrayAsigMod = inici.ArrayLProfesor.iterator();
+
+        while (itarrayAsigMod.hasNext()) {
+            prof = (Profesor) itarrayAsigMod.next();
+            if (!arrayLProf.contains(prof.getNombre())) {
+                modeloListaProfMod.addElement(prof.getNombre());
+            }
+        }
+        jLProfMod.setModel(modeloListaProfMod);
+    }
+
+    private void rellenarJlistAulaMod(Integer arrayAula[]) {
+
+        modeloListaAulaMod = new DefaultListModel();
+        ArrayList<Integer> arrayLAula = new ArrayList<>(Arrays.asList(arrayAula));
+        Iterator itarrayAsigMod = inici.ArrayLAula.iterator();
+
+        while (itarrayAsigMod.hasNext()) {
+            aula = (Aula) itarrayAsigMod.next();
+            if (!arrayLAula.contains(aula.getIdentificacion())) {
+                modeloListaAulaMod.addElement(aula.getIdentificacion());
+            }
+        }
+        jLAulaMod.setModel(modeloListaAulaMod);
+    }
+
     private void jCBTipoAltaActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
@@ -1093,14 +1612,6 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
     }
 
     private void jFTFFechaFinalizacionAltaActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void botonLimpiarModActionPerformed(java.awt.event.ActionEvent evt) {
-        System.out.println("funciona es parxe");
-    }
-
-    private void botonOKModActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
@@ -1117,7 +1628,7 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
     }
 
     private void rellenarJlistProfAlta() {
-        Iterator itArrayProf = inici.ArrayProfesor.iterator();
+        Iterator itArrayProf = inici.ArrayLProfesor.iterator();
         modeloListaProfAlta = new DefaultListModel();
 
         while (itArrayProf.hasNext()) {
@@ -1129,7 +1640,7 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
     }
 
     private void rellenarJlistAulaAlta() {
-        Iterator itArrayProf = inici.ArrayAula.iterator();
+        Iterator itArrayProf = inici.ArrayLAula.iterator();
         modeloListaAulaAlta = new DefaultListModel();
 
         while (itArrayProf.hasNext()) {
@@ -1137,6 +1648,37 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
             modeloListaAulaAlta.addElement(aula.getIdentificacion());
         }
         jLAulaAlta.setModel(modeloListaAulaAlta);
+
+    }
+
+    private void activarcampsMod(boolean b) {
+        jTFNombreMod.setEnabled(b);
+        jFTFCapacidadMaxAltaEstudioMod.setEnabled(b);
+        jFTFFechaComienzoMod.setEnabled(b);
+        jFTFFechaFinalizacionMod.setEnabled(b);
+        jFTFIdentificacionMod.setEnabled(b);
+        jFTFIdentificadorBaja.setEnabled(b);
+
+        botonAddAsignaEstMod.setEnabled(b);
+        botonAddAulaEstMod.setEnabled(b);
+        botonAddProfEstMod.setEnabled(b);
+        botonEliminarAsignaturaEstMod.setEnabled(b);
+        botonEliminarAulaEstMod.setEnabled(b);
+        botonEliminarProfEstMod.setEnabled(b);
+
+        botonOKMod.setEnabled(b);
+        botonLimpiarMod.setEnabled(b);
+
+        jCBTipoEstudioMod.setEnabled(b);
+        jCBTipoMod.setEnabled(b);
+        jCBTurnoMod.setEnabled(b);
+
+        jLAsignaturasEstudioMod.setEnabled(b);
+        jLAsignaturasMod.setEnabled(b);
+        jLAulaEstudioMod.setEnabled(b);
+        jLAulaMod.setEnabled(b);
+        jLProfEstudioMod.setEnabled(b);
+        jLProfMod.setEnabled(b);
 
     }
 
@@ -1190,6 +1732,7 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
     private javax.swing.JButton botonAddProfEstAlta;
     private javax.swing.JButton botonAddProfEstMod;
     private javax.swing.JButton botonBuscarConsulta;
+    private javax.swing.JButton botonBuscarEstMod;
     private javax.swing.JButton botonEliminarAsignaturaEstAlta;
     private javax.swing.JButton botonEliminarAsignaturaEstMod;
     private javax.swing.JButton botonEliminarAulaEstAlta;
@@ -1203,11 +1746,11 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
     private javax.swing.JButton botonOKAltaEstudio;
     private javax.swing.JButton botonOKMod;
     private javax.swing.JComboBox jCBTipoAlta;
-    private javax.swing.JComboBox jCBTipoAltaEstudioMod;
     private javax.swing.JComboBox jCBTipoEstudioAlta;
+    private javax.swing.JComboBox jCBTipoEstudioMod;
     private javax.swing.JComboBox jCBTipoMod;
     private javax.swing.JComboBox jCBTurnoAltaEstudio;
-    private javax.swing.JComboBox jCBTurnoAltaEstudioMod;
+    private javax.swing.JComboBox jCBTurnoMod;
     private javax.swing.JFormattedTextField jFTFCapacidadMaxAltaEstudio;
     private javax.swing.JFormattedTextField jFTFCapacidadMaxAltaEstudioMod;
     private javax.swing.JFormattedTextField jFTFFechaComienzoAlta;
@@ -1215,9 +1758,10 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField jFTFFechaFinalizacionAlta;
     private javax.swing.JFormattedTextField jFTFFechaFinalizacionMod;
     private javax.swing.JFormattedTextField jFTFIdentificacionAlta;
-    private javax.swing.JFormattedTextField jFTFIdentificacionBaja;
     private javax.swing.JFormattedTextField jFTFIdentificacionConsulta;
     private javax.swing.JFormattedTextField jFTFIdentificacionMod;
+    private javax.swing.JFormattedTextField jFTFIdentificacionModBuscar;
+    private javax.swing.JFormattedTextField jFTFIdentificadorBaja;
     private javax.swing.JList jLAsignaturasAlta;
     private javax.swing.JList jLAsignaturasEstudioAlta;
     private javax.swing.JList jLAsignaturasEstudioMod;
@@ -1233,6 +1777,7 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
@@ -1274,10 +1819,12 @@ public class UtilidadesEstudios extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTextArea jTAConsulta;
     private javax.swing.JTextField jTFNombreAlta;
     private javax.swing.JTextField jTFNombreMod;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
+
 }
